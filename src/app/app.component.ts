@@ -11,7 +11,9 @@ export class AppComponent implements OnInit {
   title = 'tags-replacement';
   userInput: string = "";
   userOutput: string = '';
-  tags: any[] = []
+  tags: any[] = [
+    { tag: '', replacement: '', selected: false },
+  ]
   selectAllValue: boolean = false;
   
   constructor(){}
@@ -63,21 +65,6 @@ export class AppComponent implements OnInit {
 
   checkForEscapingTags(input: string){
     let splittedWords = input.split(' ')
-    // let splittedIdentifiers = splittedWords.filter(word => word.startsWith('\\{') && word.endsWith('}'))
-    // let identifiers = splittedIdentifiers.map(identifier => identifier.substring(2, identifier.length - 1))
-    // let tags = this.tags.filter(tag => tag.selected === true)
-
-    // for(let i=0; i<splittedWords.length;i++){
-    //   if(splittedWords[i].startsWith('\\{') && splittedWords[i].endsWith('}')){
-    //     let identifier = splittedWords[i].substring(2, splittedWords[i].length - 1)
-    //     if(identifiers.includes(identifier)){
-    //       let tag = tags.find(tag => tag.tag === identifier)
-    //       if(tag){
-    //         splittedWords[i] = '{'+tag.tag+'}'
-    //       }
-    //     }
-    //   }
-    // }
     splittedWords = splittedWords.map(word => {
       return word.startsWith('\\') ? word = word.substring(1, word.length) : word = word
     })
